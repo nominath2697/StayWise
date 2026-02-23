@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Result | StayWise</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<div class="navbar">
+    <div class="logo">StayWise</div>
+    <div class="nav-links">
+        <a href="/home">Home</a>
+        <a href="/about">About</a>
+        <a href="/predict-page">Predict</a>
+        <a href="/support">Support</a>
+        <a href="/">Logout</a>
+    </div>
+</div>
+
+<div class="main-container">
+
+    <div class="glass-card" style="max-width:800px;margin:auto;text-align:center;">
+
+        <h2 class="section-title">Prediction Result</h2>
+
+        <div style="max-width:350px;margin:30px auto;">
+            <canvas id="churnChart"></canvas>
+        </div>
+
+        <div id="resultText"></div>
+
+        <div style="margin-top:30px;">
+            <a href="/predict-page" class="btn-primary">Predict Again</a>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function(){
+
+    const score = sessionStorage.getItem("predictionScore");
+
+    if(!score){
+        document.getElementById("resultText").innerHTML =
+            "<p>No prediction data found.</p>";
+        return;
+    }
+
+    const probability = (parseFloat(score) * 100).toFixed(1);
+    const retain = (100 - probability).toFixed(1);
+
+    const ctx = document.getElementById("churnChart").getContext("2d");
+
+    new Chart(ctx, {
+        type: "pie",
+        data: {
+            labels: ["Churn Risk", "Retention"],
+            datasets: [{
+                data: [probability, retain],
+                backgroundColor: ["#e74a3b", "#1cc88a"]
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: { position: "bottom" }
+            }
+        }
+    });
+
+    let html = "";
+
+    if(probability >= 50){
+
+        html = `
+            <h3 style="color:#e74a3b;">Churn probability: ${probability}%</h3>
+            <h3>Result: Customer WILL churn</h3>
+            <div style="text-align:left;margin-top:20px;">
+                <strong>Actions:</strong>
+                <ol>
+                    <li>Give 20% discount on next bill</li>
+                    <li>Make personal support call</li>
+                    <li>Offer long-term contract plan</li>
+                </ol>
+            </div>
+        `;
+
+    } else {
+
+        html = `
+            <h3 style="color:#1cc88a;">Churn probability: ${probability}%</h3>
+            <h3>Result: Customer will NOT churn</h3>
+            <p>Customer is stable. Normal engagement is enough.</p>
+        `;
+    }
+
+    document.getElementById("resultText").innerHTML = html;
+
+});
+
+</script>
+
+</body>
+</html>

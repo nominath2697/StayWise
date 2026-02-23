@@ -1,0 +1,185 @@
+/* ===================== */
+/* GLOBAL RESET */
+/* ===================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Segoe UI',sans-serif;
+    min-height:100vh;
+    background:linear-gradient(135deg,#667eea,#764ba2,#ff6a88);
+    background-size:400% 400%;
+    animation:gradientMove 15s ease infinite;
+    color:#222;
+    overflow-x:hidden;
+}
+
+/* Animated background */
+@keyframes gradientMove{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+/* ===================== */
+/* NAVBAR */
+/* ===================== */
+
+.navbar{
+    width:100%;
+    padding:15px 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(20px);
+    box-shadow:0 10px 30px rgba(0,0,0,0.15);
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.logo{
+    font-size:22px;
+    font-weight:700;
+    color:white;
+}
+
+.nav-links{
+    display:flex;
+    gap:25px;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:white;
+    font-weight:500;
+    transition:0.3s;
+}
+
+.nav-links a:hover{
+    color:#ffd86f;
+}
+
+/* ===================== */
+/* MAIN CONTAINER */
+/* ===================== */
+
+.main-container{
+    max-width:1200px;
+    margin:auto;
+    padding:70px 20px;
+}
+
+/* ===================== */
+/* GLASS CARD */
+/* ===================== */
+
+.glass-card{
+    background:rgba(255,255,255,0.25);
+    backdrop-filter:blur(25px);
+    border-radius:20px;
+    padding:40px;
+    box-shadow:0 30px 60px rgba(0,0,0,0.2);
+    transition:0.4s;
+    color:#111;
+}
+
+.glass-card:hover{
+    transform:translateY(-6px);
+}
+
+/* ===================== */
+/* TITLES */
+/* ===================== */
+
+.section-title{
+    font-size:28px;
+    margin-bottom:15px;
+    font-weight:600;
+}
+
+.section-subtitle{
+    color:#444;
+    margin-bottom:25px;
+}
+
+/* ===================== */
+/* FORM */
+/* ===================== */
+
+.form-group{
+    margin-bottom:18px;
+}
+
+.form-group label{
+    display:block;
+    margin-bottom:6px;
+    font-size:14px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea{
+    width:100%;
+    padding:12px;
+    border-radius:10px;
+    border:none;
+    background:rgba(255,255,255,0.8);
+    font-size:14px;
+    transition:0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus{
+    outline:none;
+    box-shadow:0 0 0 3px rgba(255,215,110,0.6);
+}
+
+/* ===================== */
+/* BUTTON */
+/* ===================== */
+
+.btn-primary{
+    display:inline-block;
+    padding:12px 25px;
+    background:linear-gradient(135deg,#ff6a88,#ff9a44);
+    color:white;
+    border:none;
+    border-radius:12px;
+    font-size:15px;
+    cursor:pointer;
+    text-decoration:none;
+    transition:0.3s;
+    font-weight:600;
+}
+
+.btn-primary:hover{
+    transform:scale(1.05);
+    box-shadow:0 10px 25px rgba(0,0,0,0.3);
+}
+
+/* ===================== */
+/* RESPONSIVE */
+/* ===================== */
+
+@media(max-width:768px){
+    .nav-links{
+        gap:15px;
+    }
+}
+
+@media(max-width:480px){
+    .navbar{
+        padding:15px 20px;
+    }
+
+    .section-title{
+        font-size:22px;
+    }
+}

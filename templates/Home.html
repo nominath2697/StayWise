@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home | StayWise</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/style.css') }}">
+</head>
+<body>
+
+<div class="navbar">
+    <div class="logo">StayWise</div>
+    <div class="nav-links">
+        <a href="/home">Home</a>
+        <a href="/about">About</a>
+        <a href="/predict-page">Predict</a>
+        <a href="/support">Support</a>
+        <a href="/">Logout</a>
+    </div>
+</div>
+
+<div class="main-container">
+
+    <div class="glass-card" style="display:flex;flex-wrap:wrap;align-items:center;gap:40px;">
+
+        <div style="flex:1;">
+            <h1 style="font-size:40px;">Smart Customer Retention System</h1>
+            <p style="margin:20px 0;color:#555;">
+                AI-powered churn prediction system that helps businesses reduce revenue loss and retain valuable customers.
+            </p>
+            <a href="/predict-page" class="btn-primary">Start Prediction</a>
+        </div>
+
+        <div style="flex:1;text-align:center;">
+            <img src="https://cdn-icons-png.flaticon.com/512/4149/4149647.png" width="350">
+        </div>
+
+    </div>
+
+    <div style="margin-top:60px;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:30px;">
+
+        <div class="glass-card">
+            <h3>Data Driven Insights</h3>
+            <p>Predict churn probability using machine learning algorithms.</p>
+        </div>
+
+        <div class="glass-card">
+            <h3>Reduce Revenue Loss</h3>
+            <p>Identify risky customers before they leave.</p>
+        </div>
+
+        <div class="glass-card">
+            <h3>Actionable Strategy</h3>
+            <p>Get automated retention recommendations.</p>
+        </div>
+
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='assets/script.js') }}"></script>
+</body>
+</html>
