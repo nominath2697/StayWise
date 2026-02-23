@@ -18,7 +18,7 @@ FEATURES = [
     "Payment_Electronic",
     "Payment_CreditCard"
 ]
-
+# created for html hosts
 # ================= ROUTES =================
 
 @app.route("/")
